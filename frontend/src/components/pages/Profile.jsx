@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import './profile.css';
 import { useNavigate } from "react-router-dom";
-
+import Header from "../home/Header";
+import { motion } from "framer-motion";
 const Profile = () => {
 const [userData, setUserData] = useState(null);
 const navigate = useNavigate();
@@ -37,8 +38,14 @@ if (!userData) {
 }
 
   return (
+    <> <Header />
     <div className="profile-page-container">
-      <div className="profile-card">
+      <motion.div
+  className="profile-card"
+  initial={{ y: 80, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+>
         <div className="profile-header">
           <div className="image-container">
             <img src={userData?.profilePic} alt="Profile" className="profile-img" />
@@ -87,8 +94,9 @@ if (!userData) {
           <button className="swap-btn" onClick={() => navigate("/home")}>Start Swapping</button>
           <button className="edit-btn"  onClick={() => navigate("/edit-profile")}>Edit Profile</button>
         </div>
-      </div>
+      </motion.div>
     </div>
+    </>
   );
 };
 

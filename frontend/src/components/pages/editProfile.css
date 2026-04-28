@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 40px 16px;
 }
 
 /* Card */
@@ -106,5 +106,13 @@
   .edit-profile-card {
     width: 100%;
     padding: 30px 25px;
+  }
+
+  .edit-profile-buttons {
+    flex-direction: column;
+  }
+
+  .edit-profile-buttons button {
+    width: 100%;
   }
 }

@@ -15,11 +15,11 @@
   background: #ffffff;
   max-width: 95%;
   width: 1000px;
- min-height: 520px;
+ min-height: 500px;
   border-radius: 18px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
   display: flex;
-  padding: 45px;
+  padding: 40px;
     box-sizing: border-box; 
     overflow: hidden; 
 }
@@ -118,13 +118,11 @@
 
 
 .profile-footer {
-    width: 100%;
     position: absolute;
-  margin-top: 400px;
 display: flex;
 flex-direction: row;
 gap: 1rem;
-margin-left: 650px;
+right: 40px;
   bottom: 30px;
   
   
@@ -157,5 +155,65 @@ margin-left: 650px;
 
 .profile-footer .edit-btn:hover {
   background-color: #6fa6a0;
+}
+
+@media (max-width: 820px) {
+  .profile-page-container {
+    padding: 24px 16px;
+    align-items: flex-start;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    padding: 28px 22px 90px;
+  }
+
+  .profile-header,
+  .profile-content {
+    width: 100%;
+    padding: 0;
+  }
+
+  .profile-content {
+    margin-top: 24px;
+  }
+
+  .profile-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+
+  .image-container {
+    width: 160px;
+    height: 160px;
+  }
+
+  .profile-img {
+    width: 125px;
+    height: 125px;
+  }
+
+  .profile-footer {
+    left: 22px;
+    right: 22px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 22px 16px 110px;
+  }
+
+  .profile-footer {
+    flex-direction: column;
+  }
+
+  .profile-footer .swap-btn,
+  .profile-footer .edit-btn {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 

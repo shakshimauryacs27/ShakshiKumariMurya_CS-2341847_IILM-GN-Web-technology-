@@ -8,16 +8,61 @@
 
 }
 
+.navbar .container-fluid {
+  max-width: 1440px;
+}
+
 .skillswap{
-      margin-left: 7rem;
+      margin-left: clamp(1rem, 6vw, 7rem);
+      font-weight: 700;
+      white-space: nowrap;
 }
 
 .join{
-       margin-right: 7rem;
+       margin-right: clamp(1rem, 6vw, 7rem);
   background-color: transparent;
   color: #fff;
   border: 2px solid #fff;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+}
+
+.navbar-toggler {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    background-color: rgba(255, 255, 255, 0.92) !important;
+  }
+
+  .navbar-collapse {
+    margin-top: 0.75rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+  }
+
+  .navbar-nav {
+    gap: 0.25rem !important;
+    text-align: center;
+  }
+
+  .nav-link {
+    padding: 0.75rem 0;
+  }
+
+  .join {
+    width: 100%;
+    margin: 0.75rem 0 0;
+    text-align: center;
+    border-color: #1c5769;
+  }
+
+  .join .btn {
+    width: 100%;
+    color: #1c5769;
+  }
 }

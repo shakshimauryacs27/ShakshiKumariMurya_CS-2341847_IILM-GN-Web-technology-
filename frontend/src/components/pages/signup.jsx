@@ -49,6 +49,9 @@ function Signup() {
   return (
     <div className="signup-page">
     <div className="signup-card">
+         <div className="back-btn" onClick={() => navigate("/")}>
+  <i className="fas fa-arrow-left"></i>
+</div>
       <div className="signup-card-header">
       <i className="fas fa-infinity"></i> SkillSwap
     </div>

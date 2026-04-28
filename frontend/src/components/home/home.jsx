@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Header from "./Header";
 import Sidebar from "./sidebar";
 import Banner from "./banner";
@@ -24,12 +25,19 @@ useEffect(() => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
+      if (!res.ok) {
+        console.error("Matches API error:", res.status, res.statusText);
+        setMatches([]);
+        return;
+      }
+
       const data = await res.json();
       console.log("MATCHES FETCH:", data);
-        setMatches(data || []);
+      setMatches(Array.isArray(data) ? data : []);
       
     } catch (err) {
       console.error("Failed to fetch matches:", err);
+      setMatches([]);
     }
   };
 
@@ -60,25 +68,33 @@ useEffect(() => {
 
   <div className="matches-grid">
 
-    {matches?.map((match) => (
-      <div key={match.user._id} className="match-card" onClick={() => setSelectedMatch(match)}>
+    {matches?.map((match, index) => (
+      <motion.div
+        key={match.user._id}
+        className="match-card"
+        onClick={() => setSelectedMatch(match)}
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.08 }}
+      >
         <img
           src={match.user.profilePic || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
           alt={match.user.name}
           className="match-img"
         />
         <h3>{match.user.name}</h3>
-         <p>
-        Expertise: {match.user.skillsToTeach?.length ? match.user.skillsToTeach.map(s => s.skillName).join(", ") : "None"}
-      </p>
-      <p>
-        Learning Goals: {match.user.skillsToLearn?.length ? match.user.skillsToLearn.join(", ") : "None"}
-      </p>
-       <p>
-        <strong>Location:</strong> {match.user.location || "Unknown"}
-      </p>
-      
-      </div>
+        <div className="match-details">
+          <p>
+            <b>Expertise:</b> {match.user.skillsToTeach?.length ? match.user.skillsToTeach.map(s => s.skillName).join(", ") : "None"}
+          </p>
+          <p>
+            <b>Learning Goals:</b> {match.user.skillsToLearn?.length ? match.user.skillsToLearn.join(", ") : "None"}
+          </p>
+          <p>
+            <strong>Location:</strong> {match.user.location || "Unknown"}
+          </p>
+        </div>
+      </motion.div>
     ))}
   </div>
   {selectedMatch && (

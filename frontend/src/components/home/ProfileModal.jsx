@@ -1,10 +1,46 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import "./home.css";
+
 function ProfileModal({ selectedMatch, closeModal }) {
+  const navigate = useNavigate();
+
   if (!selectedMatch) return null;
 
   const user = selectedMatch.user;
+
+  const handleChatClick = async () => {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("_id");
+
+    if (!token || !userId) {
+      alert("Please log in to chat");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:8080/chat/conversations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ recipientId: user._id }),
+      });
+
+      if (res.ok) {
+        const conversation = await res.json();
+        navigate(`/messages?conversationId=${conversation._id}`);
+        closeModal();
+      } else {
+        alert("Failed to start chat");
+      }
+    } catch (error) {
+      console.error("Chat error:", error);
+      alert("Error starting chat");
+    }
+  };
 
   return (
     <div className="profile-overlay">
@@ -40,12 +76,12 @@ function ProfileModal({ selectedMatch, closeModal }) {
           <p>
             <strong>Portfolio:</strong>{" "}
             <a href={user.portfolio} target="_blank" rel="noopener noreferrer">
-              View Portfolio
+              {user.portfolio}
             </a>
           </p>
         )}
 
-        <button className="chat-btn">
+        <button className="chat-btn" onClick={handleChatClick}>
           Chat with {user.name}
         </button>
       </div>
@@ -54,3 +90,4 @@ function ProfileModal({ selectedMatch, closeModal }) {
 }
 
 export default ProfileModal;
+

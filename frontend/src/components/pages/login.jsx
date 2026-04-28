@@ -4,7 +4,6 @@ import axios from "axios";
 import { handleError, handleSuccess } from "../../utils";
 import { ToastContainer,} from 'react-toastify';
 import "./login.css";
-
 function Login() {
   const navigate = useNavigate();
   const [loginInfo, setLoginInfo] = useState({  
@@ -63,6 +62,9 @@ function Login() {
   return (
     <div className="login-page">
     <div className="login-card">
+      <div className="back-btn" onClick={() => navigate("/")}>
+  <i className="fas fa-arrow-left"></i>
+</div>
       <div className="login-card-header">
       <i className="fas fa-infinity"></i> SkillSwap
     </div>

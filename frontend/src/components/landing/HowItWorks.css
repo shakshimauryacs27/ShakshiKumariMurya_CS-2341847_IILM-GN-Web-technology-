@@ -1,13 +1,13 @@
 
 .how-it-works {
 
-  padding: 6rem 4rem;    
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.25rem, 5vw, 4rem);    
   background: #87b3b4;
 }
 
 .how-it-works h2 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 800;
   margin-bottom: 4.5rem;
   color: #111;
@@ -15,7 +15,7 @@
 .steps {
   
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 3.2rem;           
 }
 
@@ -72,22 +72,13 @@
   line-height: 1.65;
 }
 
-@media (max-width: 1100px) {
-  .steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 600px) {
   .how-it-works {
     padding: 5rem 1.5rem;
   }
 
-  .steps {
-    grid-template-columns: 1fr;
-  }
-
-  .how-it-works h2 {
-    font-size: 2.2rem;
+  .step-card {
+    min-height: 300px;
+    padding: 3rem 1.5rem;
   }
 }

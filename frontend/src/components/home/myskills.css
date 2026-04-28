@@ -1,19 +1,22 @@
 .my-skills{
-    height: 100vh;
+    min-height: 100vh;
    
     background: linear-gradient(90deg, #ABD1AF, #87B3B4, #8ABCBD, #ce99c1);
+    padding-bottom: 2rem;
 }
 .my-skills-container {
   max-width: 800px;
   margin-top: 5%;
-  margin-left: 25%;
+  margin-left: auto;
+  margin-right: auto;
   padding: 40px;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  width: calc(100% - 32px);
 }
 .my-skills-container h1{
-    margin-left: 29%;
+    text-align: center;
     margin-bottom: 1rem;
 }
 .skill-tags {
@@ -76,4 +79,32 @@
      background-color: #2d6a6b;
      color: #fff;
      border-radius: 10px;
+}
+
+@media (max-width: 680px) {
+  .my-skills-container {
+    margin-top: 1.5rem;
+    padding: 24px 18px;
+  }
+
+  .my-skills-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .skill-input {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .skill-input input,
+  .skill-input select,
+  .skill-input button,
+  .swap-btn {
+    width: 100%;
+  }
+
+  .tag {
+    max-width: 100%;
+    word-break: break-word;
+  }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./editProfile.css";
-
+import Header from "../home/Header";
 const EditProfile = () => {
   const navigate = useNavigate();
 
@@ -86,6 +86,7 @@ const EditProfile = () => {
   }
 
   return (
+    <> <Header />
     <div className="edit-profile-container">
       <div className="edit-profile-card">
         <h1>Edit Profile</h1>
@@ -147,6 +148,7 @@ const EditProfile = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./myskills.css"; 
 import Header from "./Header";
 import { AiOutlineClose } from "react-icons/ai";
-
+import { motion } from "framer-motion";
 const MySkills = () => {
   const [skillsToTeach, setSkillsToTeach] = useState([]);
   const [skillsToLearn, setSkillsToLearn] = useState([]);
@@ -88,7 +88,12 @@ const MySkills = () => {
   return (
   <div className="my-skills">
     <Header />
-    <div className="my-skills-container">
+    <motion.div
+  className="my-skills-container"
+  initial={{ y: 80, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+>
        
       <h1>Update Your Skills</h1>
 <hr />
@@ -159,7 +164,7 @@ const MySkills = () => {
       <button className="swap-btn" onClick={handleSaveSkills}>
         Save Changes
       </button>
-    </div>
+    </motion.div>
     </div>
    
   );

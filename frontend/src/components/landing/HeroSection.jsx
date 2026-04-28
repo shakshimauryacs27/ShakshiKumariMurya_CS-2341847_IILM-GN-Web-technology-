@@ -2,7 +2,7 @@ import heroImage from "../../assets/hand1.png";
 import book from "../../assets/book.png";
 import camera from "../../assets/camera.png";
 import "./HeroSection.css";
-import { easeInOut, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import {useNavigate} from "react-router-dom";
 const HeroSection = () => {
   const navigate = useNavigate();

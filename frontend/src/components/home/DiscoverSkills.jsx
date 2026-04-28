@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProfileModal from "./ProfileModal";
 import "./home.css";
-
+import Header from "./Header";
 function DiscoverSkills() {
   const [skills, setSkills] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,6 +45,8 @@ function DiscoverSkills() {
   );
 
   return (
+<> <Header />
+
     <div className="discover-skills">
       {!selectedSkill ? (
         <>
@@ -74,14 +76,7 @@ function DiscoverSkills() {
         </>
       ) : (
         <>
-          <button className="back-btn"
-            onClick={() => {
-              setSelectedSkill(null);
-              setUsersForSkill([]);
-            }}
-          >
-            Back to skills
-          </button>
+          
           <h3>Users for {selectedSkill}</h3>
           <div className="matches-grid">
             {usersForSkill.length > 0 ? (
@@ -132,6 +127,7 @@ function DiscoverSkills() {
       )}
      
     </div>
+    </>
   );
 }
 
